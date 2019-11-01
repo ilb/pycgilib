@@ -1,14 +1,14 @@
-.PHONY: bootstrap clean lint test
+.PHONY: install clean lint test
 
 test:
-	conda activate pycgilib && python -m unittest discover
+	source activate pycgilib && pytest
 
 update:
 	conda env update
 
-bootstrap:
+install:
 	conda env create -f environment.yml
 
 publish:
-	conda activate pycgilib && python setup.py sdist bdist_wheel
+	source activate pycgilib && python setup.py sdist bdist_wheel
 	# build result will be in /dist, upload them
