@@ -1,7 +1,7 @@
 .PHONY: install clean lint test
 
 test:
-	source activate pycgilib && pytest
+	source activate pycgilib && pytest -vv
 
 update:
 	conda env update
