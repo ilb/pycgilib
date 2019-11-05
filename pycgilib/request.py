@@ -37,7 +37,7 @@ class Request:
 
     @property
     def body(self):
-        content_len = self.environ.get("CONTENT_LENGHT")
+        content_len = self.environ.get("CONTENT_LENGTH")
         return sys.stdin.read(int(content_len))
 
     def get_param(self, name):
