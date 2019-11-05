@@ -16,7 +16,7 @@ class TestResponse:
 
     def test_build_custom_response(self):
         response = Response(body="string", status="201 Created")
-
-        assert response.__str__() == (
-            "Status: 201 Created\n" + "Content-Type: text/plain\n\n" + "string\n"
+        assert (
+            response.__str__()
+            == "Status: 201 Created\r\nContent-Type: 'text/plain'\r\n\r\nstring"
         )

@@ -68,12 +68,11 @@ class Response:
 
     headers = property(_headers__get, _headers__set)
 
-    # TODO: build response from parts: head, body, headers, etc
     def __str__(self):
-        return (
-            ""
-            + "Status: %s\n" % self.status
-            + "Content-Type: %s\n\n" % self.headers.get("Content-Type")
-            + self.body
-            + "\n"
-        )
+        parts = ["Status: " + self.status]
+
+        parts += ("{!s}: {!r}".format(k, v) for (k, v) in self.headers.items())
+
+        parts += ["", self.body]
+
+        return "\r\n".join(parts)
