@@ -34,11 +34,22 @@ class Request:
     """ 
     Returns posted data from request in byte form. 
     """
-
+    # TODO: handle various encondings
     @property
     def body(self):
         content_len = self.environ.get("CONTENT_LENGTH")
         return sys.stdin.read(int(content_len))
+
+    @property
+    def user_agent(self):
+        return self.environ.get("HTTP_USER_AGENT")
+
+    @property
+    def script_name(self):
+        return self.environ.get("SCRIPT_NAME")
+
+    def script_path(self):
+        return self.environ.get("SCRIPT_FILENAME")
 
     def get_param(self, name):
         query_string = self.environ.get("QUERY_STRING")
